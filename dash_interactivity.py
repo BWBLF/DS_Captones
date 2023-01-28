@@ -90,8 +90,9 @@ def get_pie_chart(entered_site):
 
 def get_payload_chart(entered_site, payload):
     df = spacex_df
+    dff = df.loc[(df['Payload Mass (kg)']<payload[1]) & (df['Payload Mass (kg)']>payload[0])]
     
-    fig = px.scatter(df,x='Payload Mass (kg)',y='class',color='Version', title='Correlation between Payload and Success for all Sites')
+    fig = px.scatter(dff,x='Payload Mass (kg)',y='class',color='Version', title='Correlation between Payload and Success for all Sites')
 
     return fig
 
